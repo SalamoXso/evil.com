@@ -37,19 +37,6 @@
     <script>
     function cors(){
         var xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function() {
-        if (this.readyState == 4) {
-            if (this.status == 200) {
-                var responseData = this.responseText;
-                console.log('Response received:', responseData);
-
-                // Process responseData or perform further actions
-            } else {
-                console.error('Request failed with status:', this.status);
-                // Handle error appropriately (e.g., display error message)
-            }
-        }
-    };
 
     xhttp.open("POST", "https://backend.blog.nubank.com.br/wp-json/", true);
     xhttp.setRequestHeader("Content-type", "application/json"); // Set appropriate headers if needed
